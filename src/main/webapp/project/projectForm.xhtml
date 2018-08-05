@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui">
+  <ui:composition template="../common/template.xhtml">
+    <ui:define name="content">
+      <div class="padding-panel">
+        <h:form>
+          <p:messages id="messages" closable="true">
+            <p:autoUpdate/>
+          </p:messages>
+          <h:inputHidden id="projectId" value="#{projectManagedBean.project.id}"/>
+          <p:panel>
+            <f:facet name="header">
+              Project Information
+            </f:facet>
+            <h:panelGrid columns="3" cellpadding="5">
+              <h:outputLabel for="projectName" value="Name"/>
+              <h:panelGroup>
+                <p:inputText id="projectName" rendered="#{projectManagedBean.renderedForEditing}" required="true" requiredMessage="Required field!" size="30" value="#{projectManagedBean.project.projectName}"/>
+                <p:outputLabel rendered="#{projectManagedBean.renderedForViewing}" style="font-weight: bold;" value="#{projectManagedBean.project.projectName}"/>
+              </h:panelGroup>
+              <p:message for="projectName"/>
+            
+              <h:outputLabel for="projectDescription" value="Description"/>
+              <h:panelGroup>
+                <p:inputText id="projectDescription" rendered="#{projectManagedBean.renderedForEditing}" size="30" value="#{projectManagedBean.project.projectDescription}"/>
+                <p:outputLabel rendered="#{projectManagedBean.renderedForViewing}" style="font-weight: bold;" value="#{projectManagedBean.project.projectDescription}"/>
+              </h:panelGroup>
+              <p:outputLabel value=""/>
+            
+              <h:outputLabel for="clientName" value="Name of Client"/>
+              <h:panelGroup>
+                <p:inputText id="clientName" rendered="#{projectManagedBean.renderedForEditing}" required="true" requiredMessage="Required field!" size="30" value="#{projectManagedBean.project.clientName}"/>
+                <p:outputLabel rendered="#{projectManagedBean.renderedForViewing}" style="font-weight: bold;" value="#{projectManagedBean.project.clientName}"/>
+              </h:panelGroup>
+              <p:message for="clientName"/>
+            
+              <h:outputLabel for="projectManager" value="Project Manager"/>
+              <h:panelGroup>
+                <p:inputText id="projectManager" rendered="#{projectManagedBean.renderedForEditing}" required="true" requiredMessage="Required field!" size="30" value="#{projectManagedBean.project.projectManager}"/>
+                <p:outputLabel rendered="#{projectManagedBean.renderedForViewing}" style="font-weight: bold;" value="#{projectManagedBean.project.projectManager}"/>
+              </h:panelGroup>
+              <p:message for="projectManager"/>
+            </h:panelGrid>
+            <f:facet name="footer">
+              <p:commandButton action="#{projectManagedBean.saveRecord}" ajax="false" rendered="#{projectManagedBean.renderedForEditing}" value="Save"/>
+              <p:commandButton action="#{projectManagedBean.goToListPage}" ajax="false" immediate="true" value="Cancel"/>
+            </f:facet>
+          </p:panel>
+        </h:form>
+      </div>
+    </ui:define>
+  </ui:composition>
+</html>

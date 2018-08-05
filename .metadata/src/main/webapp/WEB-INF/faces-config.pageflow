@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15330595720310" configfile="/projectplanner/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="project/projectList.xhtml" x="338" y="178" id="pf15332259690560" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf15332259690571 pf15332259690572" inlinks="pf15332259690573 pf15332259690574" path="/project/projectList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="project/projectForm.xhtml" x="122" y="178" id="pf15332259690575" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15332259690573 pf15332259690574" inlinks="pf15332259690571 pf15332259690572" path="/project/projectForm.xhtml"/>
+  <links id="pf15332259690571" target="pf15332259690575" source="pf15332259690560" outcome="toProjectFormPage" redirect="true" fromaction="#{projectManagedBean.goToFormPage}"/>
+  <links id="pf15332259690572" target="pf15332259690575" source="pf15332259690560" outcome="toProjectFormPage" redirect="true" fromaction="#{projectManagedBean.viewOrUpdateRecord}"/>
+  <links id="pf15332259690573" target="pf15332259690560" source="pf15332259690575" outcome="toProjectListPage" redirect="true" fromaction="#{projectManagedBean.saveRecord}"/>
+  <links id="pf15332259690574" target="pf15332259690560" source="pf15332259690575" outcome="toProjectListPage" redirect="true" fromaction="#{projectManagedBean.goToListPage}"/>
+</pageflow:Pageflow>

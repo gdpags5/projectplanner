@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui">
+  <ui:composition template="../common/template.xhtml">
+    <ui:define name="content">
+      <div class="padding-panel">
+        <span style="font-size: 18pt; font-weight: bold;">List of Tasks</span>
+        <br/>
+        <br/>
+        <h:form>
+          <p:commandButton action="#{taskManagedBean.goToFormPage}" ajax="false" value="Add Task"/>
+          <br/>
+          <br/>
+          <p:dataTable emptyMessage="No tasks found!" value="#{taskManagedBean.tasks}" var="task" widgetVar="tasksTable">
+            <p:column filterBy="#{task.id}" filterMatchMode="contains" headerText="Task ID">
+              <h:outputText value="#{task.id}"/>
+            </p:column>
+            
+            <p:column filterBy="#{task.taskName}" filterMatchMode="contains" headerText="Name">
+              <h:outputText value="#{task.taskName}"/>
+            </p:column>
+          
+            <p:column filterBy="#{task.taskDescription}" filterMatchMode="contains" headerText="Description">
+              <h:outputText value="#{task.taskDescription}"/>
+            </p:column>
+            
+            <p:column filterBy="#{task.project.projectName}" filterMatchMode="contains" headerText="Project">
+              <h:outputText value="#{task.project.projectName}"/>
+            </p:column>
+          
+            <p:column filterBy="#{task.taskAssignedTo}" filterMatchMode="contains" headerText="Assigned To">
+              <h:outputText value="#{task.taskAssignedTo}"/>
+            </p:column>
+          
+            <p:column filterBy="#{task.dependencyTaskId}" filterMatchMode="contains" headerText="Dep. Task ID">
+              <h:outputText value="#{task.dependencyTaskId}"/>
+            </p:column>
+            
+            <p:column headerText="Start">
+              <h:outputText value="#{task.taskStart}">
+                <f:convertDateTime pattern="MMM dd, yyyy" />
+              </h:outputText>
+            </p:column>
+            
+            <p:column headerText="End">
+              <h:outputText value="#{task.taskEnd}">
+                <f:convertDateTime pattern="MMM dd, yyyy" />
+              </h:outputText>
+            </p:column>
+          
+            <p:column headerText="Action">
+              <p:commandButton action="#{taskManagedBean.viewOrUpdateRecord}" ajax="false" value="View">
+                <f:param name="taskId" value="#{task.id}"/>
+                <f:param name="mode" value="view"/>
+              </p:commandButton>
+              <p:commandButton action="#{taskManagedBean.viewOrUpdateRecord}" ajax="false" value="Update">
+                <f:param name="taskId" value="#{task.id}"/>
+                <f:param name="mode" value="update"/>
+              </p:commandButton>
+            </p:column>
+          </p:dataTable>
+        </h:form>
+      </div>
+    </ui:define>
+  </ui:composition>
+</html>

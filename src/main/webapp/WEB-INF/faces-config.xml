@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2"
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+  <application>
+    <locale-config>
+      <default-locale>en_PH</default-locale>
+    </locale-config>
+  </application>
+  
+  <!-- Navigation rule for project list -->
+  <navigation-rule>
+    <from-view-id>/project/projectList.xhtml</from-view-id>
+    <navigation-case>
+      <from-action>#{projectManagedBean.goToFormPage}</from-action>
+      <from-outcome>toProjectFormPage</from-outcome>
+      <to-view-id>/project/projectForm.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-action>#{projectManagedBean.viewOrUpdateRecord}</from-action>
+      <from-outcome>toProjectFormPage</from-outcome>
+      <to-view-id>/project/projectForm.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <!-- Navigation rule for project form -->
+  <navigation-rule>
+    <from-view-id>/project/projectForm.xhtml</from-view-id>
+    <navigation-case>
+      <from-action>#{projectManagedBean.saveRecord}</from-action>
+      <from-outcome>toProjectListPage</from-outcome>
+      <to-view-id>/project/projectList.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-action>#{projectManagedBean.goToListPage}</from-action>
+      <from-outcome>toProjectListPage</from-outcome>
+      <to-view-id>/project/projectList.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <!-- Navigation rule for task list -->
+  <navigation-rule>
+    <from-view-id>/task/taskList.xhtml</from-view-id>
+    <navigation-case>
+      <from-action>#{taskManagedBean.goToFormPage}</from-action>
+      <from-outcome>toTaskFormPage</from-outcome>
+      <to-view-id>/task/taskForm.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-action>#{taskManagedBean.viewOrUpdateRecord}</from-action>
+      <from-outcome>toTaskFormPage</from-outcome>
+      <to-view-id>/task/taskForm.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <!-- Navigation rule for task form -->
+  <navigation-rule>
+    <from-view-id>/task/taskForm.xhtml</from-view-id>
+    <navigation-case>
+      <from-action>#{taskManagedBean.saveRecord}</from-action>
+      <from-outcome>toTaskListPage</from-outcome>
+      <to-view-id>/task/taskList.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-action>#{taskManagedBean.goToListPage}</from-action>
+      <from-outcome>toTaskListPage</from-outcome>
+      <to-view-id>/task/taskList.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+</faces-config>

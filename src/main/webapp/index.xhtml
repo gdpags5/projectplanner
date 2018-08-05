@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  <ui:composition template="common/template.xhtml">
+    <ui:define name="content">
+      <div class="padding-panel">
+        <span style="font-size: 18pt; font-weight: bold;">Dashboard</span>
+        <br/>
+        <br/>
+        <h:form>
+          <i>Note: Create a new project and its tasks so that the schedule will display.</i>
+          <br/>
+          <br/>
+          <p:schedule rendered="#{dashboardManagedBean.renderedForViewing}" style="width: 750px; height: 650px" value="#{dashboardManagedBean.projectScheduleModel}"/>
+        </h:form>
+      </div>
+    </ui:define>
+  </ui:composition>
+</html>
